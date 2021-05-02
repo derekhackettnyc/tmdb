@@ -7,13 +7,10 @@ import Course from './Course'
 import Spinner from '../ui/Spinner'
 
 // Redux - actions creators
-import { searchResource, fetchCourses, filterCourses, discoverResources, fetchGenres, fetchSearchCategoryTotals } from '../../actions'
+import { searchResource, fetchGenres, fetchSearchCategoryTotals } from '../../actions'
 
 const actions = {
     searchResource,
-    fetchCourses,
-    filterCourses,
-    discoverResources,
     fetchGenres,
     fetchSearchCategoryTotals
 }
@@ -26,8 +23,8 @@ const SORT_TYPES = {
 
 const SearchTMDB = (props) => {
 
-    const { isLoading, courses, genres, totals, searchResource, fetchCourses, filterCourses, discoverResources, fetchGenres, fetchSearchCategoryTotals } = props
-    const { catagory, subcatagory, topic, query } = props.match.params;
+    const { isLoading, courses, totals, searchResource, fetchGenres, fetchSearchCategoryTotals } = props
+    const { query } = props.match.params;
 
     // const [sideNav, setSideNav] = useState(true)
 
