@@ -117,7 +117,8 @@ button {
     }
 
     &.round-box-shadow {
-      background-color: #15c39a;
+      background-color: $trueblue;
+      padding:2rem 1rem;
       color: #ffffff !important;
       border-width: 0px !important;
       border-color: rgba(0,0,0,0);
