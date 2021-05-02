@@ -1,14 +1,10 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import InfiniteScroll from 'react-infinite-scroller'
+// import InfiniteScroll from 'react-infinite-scroller'
 
 import Course from './Course'
 import Spinner from '../ui/Spinner'
-import FilterButtons from './FilterButtons'
-
-import { IMAGE_BASE_URL, PROFILE_SIZE } from '../../config'
-
 
 // Redux - actions creators
 import { searchResource, fetchCourses, filterCourses, discoverResources, fetchGenres, fetchSearchCategoryTotals } from '../../actions'
@@ -33,43 +29,26 @@ const SearchTMDB = (props) => {
     const { isLoading, courses, genres, totals, searchResource, fetchCourses, filterCourses, discoverResources, fetchGenres, fetchSearchCategoryTotals } = props
     const { catagory, subcatagory, topic, query } = props.match.params;
 
-    // const [sort, setSort] = React.useState('popularity')
+    // const [sideNav, setSideNav] = useState(true)
 
-    const [sideNav, setSideNav] = React.useState(true)
-
-    const [genreArr, setGenreArr] = React.useState([])
+    // const [genreArr, setGenreArr] = useState([])
 
     // Not using pagination, using InfiniteScroll to display new content when user scoll. 
-    const [ptr, setPtr] = useState(0)
-    const [perPage] = useState(5)
-    const [count, setCount] = useState({})
-    const [filter, setFilter] = useState([])
+    // const [ptr, setPtr] = useState(0)
+    // const [perPage] = useState(5)
+    // const [count, setCount] = useState({})
+    // const [filter, setFilter] = useState([])
 
     const [search,setSearch] = React.useState('movie')
 
-    React.useEffect(() => {
+    useEffect(() => {
         searchResource(search,query)
     },[search])
 
     useEffect(() => {
         fetchGenres()
         fetchSearchCategoryTotals(query)
-        // discoverResources('movie','popularity.desc',genreArr.join(','),1)
     }, [])
-
-    // useEffect(() => {
-    //     console.log("you want to search for ",genreArr)
-    // },[genreArr])
-
-    // useEffect(() => {
-    //     // Once MOUNTED / PROPS CHANGED Grab the data
-    //     console.log("QUERY",query)
-    //     // filterCourses(query) 
-    // }, [query])
-
-    // const loadMoreResources = () => {
-    //     query ? filterCourses(query, courses.page + 1) : fetchCourses(catagory, subcatagory, courses.page + 1)
-    // }
 
     return (
         <>
@@ -107,7 +86,7 @@ const SearchTMDB = (props) => {
             {(courses.page <= courses.total_pages && !isLoading)
                 ?
                 <div style={{ textAlign: 'center', padding: '1rem' }}>
-                    <button onClick={() => searchResource(search, query, courses.page + 1)}>Load More</button>
+                    <button className='trueblue' onClick={() => searchResource(search, query, courses.page + 1)}>Load More</button>
                 </div>
                 :
                 null
