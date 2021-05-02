@@ -84,7 +84,7 @@ const SearchTMDB = (props) => {
 const mapStateToProps = state => {
     return {
         isLoading: state.async.loading,
-        resources: state.courses,
+        resources: state.resources,
         genres: state.genres,
         totals: state.totals
     }

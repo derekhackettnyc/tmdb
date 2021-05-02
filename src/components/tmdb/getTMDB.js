@@ -10,11 +10,10 @@ import { IMAGE_BASE_URL, PROFILE_SIZE } from '../../config'
 
 
 // Redux - actions creators
-import { fetchCourses, filterCourses, discoverResources, fetchGenres } from '../../actions'
+import { fetchResources, discoverResources, fetchGenres } from '../../actions'
 
 const actions = {
-    fetchCourses,
-    filterCourses,
+    fetchResources,
     discoverResources,
     fetchGenres
 }
@@ -28,7 +27,7 @@ const SORT_TYPES = {
 
 const GetTMDB = (props) => {
 
-    const { isLoading, resources, genres, fetchCourses, filterCourses, discoverResources, fetchGenres } = props
+    const { isLoading, resources, genres, fetchResources, discoverResources, fetchGenres } = props
     const { catagory, subcatagory, topic, query } = props.match.params;
 
     const paramsRef = useRef({})
@@ -58,7 +57,7 @@ const GetTMDB = (props) => {
 
     useEffect(() => {
         fetchGenres()
-        fetchCourses(catagory, subcatagory)
+        fetchResources(catagory, subcatagory)
     }, [])
 
 
@@ -66,7 +65,7 @@ const GetTMDB = (props) => {
         // Once MOUNTED / PROPS CHANGED Grab the data
         if(params.page) {
             const resourceType = (params.with_genres.length === 0) && (params.sort_by === 'popularity')
-            resourceType ? fetchCourses(catagory, subcatagory, params.page) : discoverResources(catagory, params)
+            resourceType ? fetchResources(catagory, subcatagory, params.page) : discoverResources(catagory, params)
         }
 
     }, [catagory, subcatagory, params])
@@ -193,7 +192,7 @@ const GetTMDB = (props) => {
 const mapStateToProps = state => {
     return {
         isLoading: state.async.loading,
-        resources: state.courses,
+        resources: state.resources,
         genres: state.genres
     }
 }

@@ -1,15 +1,13 @@
-import coursesAPI from '../apis/courses'
-
 import tmdbAPI from '../apis/tmdbAPI'
 
-import { API_URL, API_KEY } from '../config';
+import { API_KEY } from '../config';
 import { wait } from '../components/utils'
 
-import { ASYNC_START, ASYNC_END, FETCH_RESOURCES, FILTER_COURSES, FETCH_GENRES, SEARCH_TOTALS, OPEN_DROPDOWN, MENUDRAW_OPENED } from './types'
+import { ASYNC_START, ASYNC_END, FETCH_RESOURCES, FETCH_GENRES, SEARCH_TOTALS, OPEN_DROPDOWN, MENUDRAW_OPENED } from './types'
 
 // actions creators
 
-export const fetchCourses = (category, subcategory, page=1) => async dispatch => {
+export const fetchResources = (category, subcategory, page=1) => async dispatch => {
 
     // This action creator is called when a menu item is selected. 
     dispatch(asyncStart())
@@ -22,20 +20,33 @@ export const fetchCourses = (category, subcategory, page=1) => async dispatch =>
     console.log("RESPONSE",response.data)
 }
 
+// export const fetchCourses = (category, subcategory, page=1) => async dispatch => {
 
-export const filterCourses = (query, page=1) => async dispatch => {
+//     // This action creator is called when a menu item is selected. 
+//     dispatch(asyncStart())
+//     dispatch(menuDrawOpened(false))
+//     await wait(700) // for development only
+//     const response = await tmdbAPI.get(`${category}/${subcategory}?api_key=${API_KEY}&language=en-US&region=US&page=${page}`)
+//     dispatch({ type: FETCH_RESOURCES, payload: response.data})
 
-    // This action creator is called when the user enters a query into the search bar
-    dispatch(asyncStart())
-    dispatch(menuDrawOpened(false))
-    await wait(700) // for development only
-    const response = await tmdbAPI.get(`search/movie?query=${query}&api_key=${API_KEY}&language=en-US&page=${page}`)
-    dispatch({ type: FETCH_RESOURCES, payload: response.data})
+//     dispatch(asyncEnd())
+//     console.log("RESPONSE",response.data)
+// }
 
-    console.log("SEARCH",response.data)
 
-    dispatch(asyncEnd())
-}
+// export const filterCourses = (query, page=1) => async dispatch => {
+
+//     // This action creator is called when the user enters a query into the search bar
+//     dispatch(asyncStart())
+//     dispatch(menuDrawOpened(false))
+//     await wait(700) // for development only
+//     const response = await tmdbAPI.get(`search/movie?query=${query}&api_key=${API_KEY}&language=en-US&page=${page}`)
+//     dispatch({ type: FETCH_RESOURCES, payload: response.data})
+
+//     console.log("SEARCH",response.data)
+
+//     dispatch(asyncEnd())
+// }
 
 
 export const discoverResources = (resource='movie', params, page=1) => async dispatch => {
