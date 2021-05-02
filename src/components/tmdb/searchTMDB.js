@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 // import { Link } from 'react-router-dom'
 // import InfiniteScroll from 'react-infinite-scroller'
 
-import Course from './Course'
+import Resource from './Resource'
 import Spinner from '../ui/Spinner'
 
 // Redux - actions creators
@@ -23,7 +23,7 @@ const SORT_TYPES = {
 
 const SearchTMDB = (props) => {
 
-    const { isLoading, courses, totals, searchResource, fetchGenres, fetchSearchCategoryTotals } = props
+    const { isLoading, resources, totals, searchResource, fetchGenres, fetchSearchCategoryTotals } = props
     const { query } = props.match.params;
 
     const [search,setSearch] = React.useState('movie')
@@ -61,17 +61,17 @@ const SearchTMDB = (props) => {
                 <div className='search__main'>
                     <ul className="courses">
                         {
-                            courses.results && courses.results.map((course, i) => <Course course={course} key={`${i}-${course.id}`} />)
+                            resources.results && resources.results.map((resource, i) => <Resource resource={resource} key={`${i}-${resource.id}`} />)
                         }
                     </ul>
                 </div>
             </section>
 
             {isLoading ? <Spinner /> : null}
-            {(courses.page <= courses.total_pages && !isLoading)
+            {(resources.page <= resources.total_pages && !isLoading)
                 ?
                 <div style={{ textAlign: 'center', padding: '2rem' }}>
-                    <button className='trueblue' onClick={() => searchResource(search, query, courses.page + 1)}>Load More</button>
+                    <button className='trueblue' onClick={() => searchResource(search, query, resources.page + 1)}>Load More</button>
                 </div>
                 :
                 null
@@ -84,7 +84,7 @@ const SearchTMDB = (props) => {
 const mapStateToProps = state => {
     return {
         isLoading: state.async.loading,
-        courses: state.courses,
+        resources: state.courses,
         genres: state.genres,
         totals: state.totals
     }

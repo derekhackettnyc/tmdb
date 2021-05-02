@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import Course from './Course'
+import Resource from './Resource'
 import Spinner from '../ui/Spinner'
 import FilterButtons from './FilterButtons'
 
@@ -28,7 +28,7 @@ const SORT_TYPES = {
 
 const GetTMDB = (props) => {
 
-    const { isLoading, courses, genres, fetchCourses, filterCourses, discoverResources, fetchGenres } = props
+    const { isLoading, resources, genres, fetchCourses, filterCourses, discoverResources, fetchGenres } = props
     const { catagory, subcatagory, topic, query } = props.match.params;
 
     const paramsRef = useRef({})
@@ -106,7 +106,7 @@ const GetTMDB = (props) => {
 
     return (
         <>
-            <h1 className="page-heading">{`${catagory} | ${sub} - ${courses.total_results} results`}</h1>
+            <h1 className="page-heading">{`${catagory} | ${sub} - ${resources.total_results} results`}</h1>
             <div style={{marginLeft:'1rem'}}>
                 <button className='trueblue' onClick={() => setSideNav(!sideNav)}><i className="fas fa-3x fa-sliders-h"></i></button>
             </div>
@@ -164,21 +164,19 @@ const GetTMDB = (props) => {
                 <div className='filter-resources__list-container'>
                     <ul className="courses">
                         {
-                            courses.results &&
-                            courses.results
+                            resources.results &&
+                            resources.results
                                 // .slice(0,1)
-                                .map((course, i) => <Course course={course} key={`${i}-${course.id}`} />) // display the courses
+                                .map((resource, i) => <Resource resource={resource} key={`${i}-${resource.id}`} />) // display the resources
                         }
                     </ul>
                 </div>
             </div>
 
             {isLoading ? <Spinner /> : null}
-            {(courses.page <= courses.total_pages && !isLoading)
+            {(resources.page <= resources.total_pages && !isLoading)
                 ?
                 <div style={{ textAlign: 'center', padding: '1rem' }}>
-                    {/* <button onClick={() => setParams({...params, page:courses.page+1})}>Load More</button> */}
-                    {/* <button onClick={() => applyFilters(courses.page+1)}>Load More</button> */}
                     <button className='trueblue' onClick={handleLoadMore}>Load More</button>
                 </div>
                 :
@@ -195,7 +193,7 @@ const GetTMDB = (props) => {
 const mapStateToProps = state => {
     return {
         isLoading: state.async.loading,
-        courses: state.courses,
+        resources: state.courses,
         genres: state.genres
     }
 }
