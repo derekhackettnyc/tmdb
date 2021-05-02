@@ -1,0 +1,61 @@
+.filter-resources {
+    display: flex;
+    padding: 1rem;
+
+    &__components {
+        text-align: center;
+        overflow: hidden;
+        width:0px;
+        transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    }
+
+    &__list-container {
+        flex:1;
+        
+    }
+
+    &__button {
+        width:100%;
+        padding:2rem;
+        font-size:large;
+
+    }
+}
+
+
+
+
+.query {
+    display: flex;
+    &__components {
+        // display: flex;
+        // flex-direction: column;
+        text-align: center;
+
+        background-color: pink;
+        overflow: hidden;
+        width:0px;
+        transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+
+        // display: none;
+        // @include respond(tablet-portrait) {
+        //     display: block;
+    }
+
+    &__list-container {
+        flex:1;
+    }
+
+
+    // &__button {
+    //     display: block;
+    //     width:100%;
+    // }
+
+    //     // &--open {
+    //     //     display:block;
+    //     // }
+    // }
+
+}
+

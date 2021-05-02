@@ -1,0 +1,334 @@
+
+
+.catagory-card {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d8d8d8;
+  box-shadow: 0px 2px 24px 0px rgba(53,55,64,0.1);
+  background-color: white;
+  color:white;
+  width:300px;
+  word-wrap: break-word;
+  @include respond(phone-plus) {
+      width: 400px;
+  }
+
+  &--active {
+
+    border:6px solid yellow;
+    cursor: pointer;
+    
+  }
+
+
+  &__paragraph {
+      padding: 5rem;
+  }
+
+  &__content {
+      color: #747d88;
+      padding:3rem;
+      
+      & > * {
+          margin-top: 1rem;
+      }        
+  }
+
+  &__title {
+      text-transform: capitalize;
+      font-weight: 600;
+
+  }
+
+  &__video {
+      background-image: url(https://www.elegantthemes.com/preview/Divi/wp-content/uploads/2014/11/leaves-video-cover.jpg);
+  background-size: cover;
+  height:30vh;
+  }
+}
+
+.results {
+  &__heading {
+    background: $trueblue;
+    color:white;
+    padding:2rem;
+    text-align: center;
+    margin: .5rem;
+    border-radius: 3px;
+  }
+
+  &__list {
+    margin: .5rem;
+    border-radius: 3px;
+    & li:not(:last-child) {
+      border-bottom: solid .1rem #ccc;
+    }
+
+  }
+
+  // &__item {
+  //   // padding:2rem;
+  // }
+
+  &__button {
+    padding:1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    font-size:2rem;
+    width:100%;
+    text-transform: capitalize;
+  }
+}
+
+
+
+.spotlights {
+
+    padding:2%;
+    @include respond(tablet-landscape) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        // grid-template-rows: 1fr 1fr;
+    }
+
+    &__link-contaioner {
+        text-align: center;
+        padding:2%;
+    }    
+
+}
+
+
+  .spotlight {
+    //   border:1px solid red;
+      padding:1rem;
+      display:grid;
+      grid-gap:1rem;
+      justify-items: center;
+      text-align: center;
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content 1fr;
+
+      @include respond(tablet-landscape) {
+        grid-template-columns: 20% 1fr;
+        grid-template-rows: 1fr;
+        text-align: left;
+        justify-items: left;
+      }
+
+
+    &__icon {
+      align-self: start;
+      @include respond(tablet-landscape) {
+        justify-self:right;
+      }
+
+    }
+
+    &__title, &__name {
+      color: #333;
+      text-transform: capitalize;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: bolder;
+    }
+
+    &__text {
+      color:#898989;
+      margin-bottom: 1rem;
+    }
+  
+  }
+
+
+.courses {
+  color:#3c3b37;
+  font-size: 1.4rem;
+  margin-left: 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d8d8d8;
+  box-shadow: 0px 2px 24px 0px rgba(53,55,64,0.1);
+  
+  & li:not(:last-child) {
+    border-bottom: solid .1rem #ccc;
+    // padding: 1rem;
+}
+
+  .course {
+
+    text-align: left;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    padding:2rem;
+    gap:1rem;
+
+    &__picture {
+      border-radius: .5rem;
+      overflow: hidden;
+      // justify-self: right;
+    }
+
+    &__main {
+
+      & > p {
+        margin-top: 1rem;
+    }  
+       
+
+    }
+
+    &__title {
+      font-size:1.6rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 1rem;
+
+      @include respond(tablet-portrait) {
+        font-size: 2rem;
+      }
+
+    }
+
+    &__headline {
+      font-weight: lighter;
+      display: none;
+
+
+      @include respond(tablet-portrait) {
+        display: initial;
+        font-size: 1.8rem;
+      }
+    }
+
+    &__date{
+
+      grid-column: 2/3;
+      font-weight: bolder;
+
+      @include respond(tablet-portrait) {
+        grid-column: 3/4;
+        text-align: right;
+        font-size: 1.6rem;
+
+    }
+
+    }
+
+  }
+}
+
+.course-details {
+
+  padding:1rem;
+  margin-top: 16rem;
+
+
+
+   @include respond(tablet-portrait) {
+
+      text-align: center;
+      font-size: 2rem;
+  }
+
+
+  &__picture {
+    border-radius: .5rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__main {
+    & > p {
+      margin-top: 1rem;
+      font-weight: lighter;
+  }  
+     
+
+  }
+
+  &__title {
+    font-size:2.4rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 2rem 0;
+
+    @include respond(tablet-portrait) {
+      font-size: 3rem;
+    }
+
+  }
+
+  &__price-container {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__price {
+    grid-column: 2/3;
+    font-weight: bolder;
+    font-size: 4rem;
+    padding:2rem;
+
+  }
+
+  &__money-back {
+    padding:2rem;
+    color:#777;
+  }
+
+  &__objectives {
+    padding:2rem;
+
+    background-color:#f6f6f6;
+
+    & h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+  }
+
+}
+
+
+// .slick-next {
+
+//     border:3px solid black;
+//     background: black;
+//     right:10px;
+//     width:inherit;
+//     height:inherit;
+//     opacity:0;
+//     color:white;
+// }
+
+// .slick-dots {
+//     bottom: 25px;
+// }
+
+// .slick-dots li button::before {
+//     font-size: 1.5rem;
+//     opacity: .5;
+//     color: white;
+// }
+
+.slick-prev:before, .slick-next:before{
+  color: $sapphire;
+  font-size: 4rem;
+}
+
+
+.grid-rings-sizes {
+	
+	display:grid;
+	grid-gap: .8em .25em;
+
+	 grid-template-columns: repeat(auto-fit,minmax(50px,1fr));
+	justify-content: space-evenly;
+	align-content: space-around;
+	padding:.5em;
+	
+	
+}
