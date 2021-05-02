@@ -37,7 +37,7 @@
   text-transform:uppercase;
   padding:3%;
   border-radius: 5px;
-  background: rgba(112, 112, 110, 0.4);
+  // background: rgba(112, 112, 110, 0.4);
 
 &--main {
       font-size: 6rem; 
@@ -45,8 +45,10 @@
       font-weight: 600; 
       line-height: 10rem;
       display: block; 
+      line-height: 5rem;
       @include respond(tablet-portrait) {
-          font-size:10rem;   
+          font-size:8rem;
+          line-height: 8rem; 
       }
   }
 
@@ -55,8 +57,8 @@
   margin-top:1rem;
   line-height: 3rem; 
   @include respond(tablet-portrait) {
-    font-size: 5rem;
-    line-height: 5rem;
+    font-size: 4rem;
+    line-height: 4rem;
   } 
   font-weight: 200; 
   display: block; 

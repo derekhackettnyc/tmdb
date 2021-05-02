@@ -82,29 +82,19 @@
 
 
 .home {
-    flex:1;
     position: relative;
-    // background: url("https://www.elegantthemes.com/layouts/wp-content/uploads/2018/06/pencils-1.png") bottom center/contain no-repeat;
-    // background: url('/assets/images/tmdb-hero-mobile.jpeg') bottom center/cover no-repeat;
+    background: url("https://ali.sandbox.etdevs.com/divi/wp-content/uploads/sites/2/2019/12/theater-02.jpg") bottom center/cover no-repeat;
     height: 70vh;
-    background: url('/assets/images/tmdb-hero.jpeg') bottom center/cover no-repeat;
-    // @include respond(tablet-landscape) {
-    //     background: url('/assets/images/tmdb-hero.jpeg') bottom center/cover no-repeat;
-    // }
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
 }
 
 
-
 .banner {
 
     display: flex;
-
     flex-direction: column;
-
-
 
     &--timer {
         height: 50vh;
