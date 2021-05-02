@@ -64,9 +64,8 @@ const GetTMDB = (props) => {
 
     useEffect(() => {
         // Once MOUNTED / PROPS CHANGED Grab the data
-        if(params.page > 1) {
+        if(params.page) {
             const resourceType = (params.with_genres.length === 0) && (params.sort_by === 'popularity')
-            console.log("resourceTYpe",resourceType)
             resourceType ? fetchCourses(catagory, subcatagory, params.page) : discoverResources(catagory, params)
         }
 
@@ -98,22 +97,18 @@ const GetTMDB = (props) => {
     const handleSearch = () => {
         // setDiscover(true)
         setSub('Custom Filter')
-        discoverResources(catagory, params)
+        discoverResources(cat, params)
     }
 
     const handleLoadMore = () => {
-
         setParams({...params, page:params.page+1})
-        // const resourceType = (params.with_genres.length === 0) && (params.sort_by === 'popularity')
-        // console.log("resourceTYpe",resourceType)
-        // resourceType ? fetchCourses(catagory, subcatagory, params.page) : discoverResources(catagory, params)
     }
 
     return (
         <>
             <h1 className="page-heading">{`${catagory} | ${sub} - ${courses.total_results} results`}</h1>
-            <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem', width: '50%' }}>
-                <button onClick={() => setSideNav(!sideNav)}>FILTER</button>
+            <div style={{marginLeft:'1rem'}}>
+                <button className='trueblue' onClick={() => setSideNav(!sideNav)}><i className="fas fa-3x fa-sliders-h"></i></button>
             </div>
 
             <div className='filter-resources'>
@@ -143,7 +138,6 @@ const GetTMDB = (props) => {
                                 ))
                             }
                         </ul>
-
                     </div>
                     <div className="genre">
                         <h4 className='genre__heading'>Genres</h4>
@@ -172,7 +166,7 @@ const GetTMDB = (props) => {
                         {
                             courses.results &&
                             courses.results
-                                .slice(0,1)
+                                // .slice(0,1)
                                 .map((course, i) => <Course course={course} key={`${i}-${course.id}`} />) // display the courses
                         }
                     </ul>
@@ -185,7 +179,7 @@ const GetTMDB = (props) => {
                 <div style={{ textAlign: 'center', padding: '1rem' }}>
                     {/* <button onClick={() => setParams({...params, page:courses.page+1})}>Load More</button> */}
                     {/* <button onClick={() => applyFilters(courses.page+1)}>Load More</button> */}
-                    <button onClick={handleLoadMore}>Load More</button>
+                    <button className='trueblue' onClick={handleLoadMore}>Load More</button>
                 </div>
                 :
                 null
