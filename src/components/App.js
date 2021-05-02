@@ -8,12 +8,8 @@ import HomePage from './Home'
 
 import { debounce } from './utils'
 
-import GetCourses from './courses/getCourses'
-import CourseDetails from './courses/courseDetails'
-
 import GetTMDB from './tmdb/getTMDB'
 import SearchTMDB from './tmdb/searchTMDB'
-
 
 import '../resources/scss/wild-style.scss'
 
@@ -36,9 +32,6 @@ const App = ({menuDrawOpened }) => {
                     <Route path="/" exact component={HomePage} />
                     <Route path={['/search/:query']} exact component={SearchTMDB} />
                     <Route path={['/:catagory/:subcatagory', '/:catagory/:subcatagory/:topic']} exact component={GetTMDB} />
-
-                    {/* <Route path={['/search/:query', '/:catagory/:subcatagory', '/:catagory/:subcatagory/:topic']} exact component={GetCourses} /> */}
-                    <Route path="/:catagory/:subcatagory/:topic/:id" exact component={CourseDetails} />
                     <Redirect to="/" />
                 </Switch>
             </Layout>
