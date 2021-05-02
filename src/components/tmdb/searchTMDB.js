@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 // import InfiniteScroll from 'react-infinite-scroller'
 
 import Course from './Course'
@@ -25,16 +25,6 @@ const SearchTMDB = (props) => {
 
     const { isLoading, courses, totals, searchResource, fetchGenres, fetchSearchCategoryTotals } = props
     const { query } = props.match.params;
-
-    // const [sideNav, setSideNav] = useState(true)
-
-    // const [genreArr, setGenreArr] = useState([])
-
-    // Not using pagination, using InfiniteScroll to display new content when user scoll. 
-    // const [ptr, setPtr] = useState(0)
-    // const [perPage] = useState(5)
-    // const [count, setCount] = useState({})
-    // const [filter, setFilter] = useState([])
 
     const [search,setSearch] = React.useState('movie')
 
@@ -87,9 +77,7 @@ const SearchTMDB = (props) => {
                 null
             }
         </>
-
     )
-
 }
 
 // Get values from redux store and map to props. Yes. Still using mapState - it's a GIT thing!
