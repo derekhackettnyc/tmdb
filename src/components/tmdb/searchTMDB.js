@@ -57,19 +57,19 @@ const SearchTMDB = (props) => {
         // discoverResources('movie','popularity.desc',genreArr.join(','),1)
     }, [])
 
-    useEffect(() => {
-        console.log("you want to search for ",genreArr)
-    },[genreArr])
+    // useEffect(() => {
+    //     console.log("you want to search for ",genreArr)
+    // },[genreArr])
 
-    useEffect(() => {
-        // Once MOUNTED / PROPS CHANGED Grab the data
-        console.log("QUERY",query)
-        // filterCourses(query) 
-    }, [query])
+    // useEffect(() => {
+    //     // Once MOUNTED / PROPS CHANGED Grab the data
+    //     console.log("QUERY",query)
+    //     // filterCourses(query) 
+    // }, [query])
 
-    const loadMoreResources = () => {
-        query ? filterCourses(query, courses.page + 1) : fetchCourses(catagory, subcatagory, courses.page + 1)
-    }
+    // const loadMoreResources = () => {
+    //     query ? filterCourses(query, courses.page + 1) : fetchCourses(catagory, subcatagory, courses.page + 1)
+    // }
 
     return (
         <>
