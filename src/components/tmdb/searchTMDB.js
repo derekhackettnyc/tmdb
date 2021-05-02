@@ -81,7 +81,7 @@ const SearchTMDB = (props) => {
                             <ul className="results__list">
                                 {
                                     totals && totals.map(({name,total}) => (
-                                       <li className='results__item'>
+                                       <li className='results__item' key={name}>
                                             <button className="results__button" onClick={() => setSearch(name)}>
                                                 <span>{name}</span>
                                                 <span>({total})</span>
