@@ -6,7 +6,7 @@ import { mainNavMenu } from '../../menus'
 const Layout = (props) => {
 
     return (
-            <div className="main" >
+            <div>
                 {/* <AnimateHeader> */}
                     <Header nav={mainNavMenu} />
                 {/* </AnimateHeader> */}
