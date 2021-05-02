@@ -35,25 +35,28 @@
 
 .main-heading {
   text-transform:uppercase;
-  padding:5%;
+  padding:3%;
   border-radius: 5px;
+  background: rgba(112, 112, 110, 0.4);
+
 &--main {
-      font-size: 10rem; 
+      font-size: 6rem; 
       letter-spacing: .1rem; 
       font-weight: 600; 
       line-height: 10rem;
       display: block; 
       @include respond(tablet-portrait) {
-          font-size:10rem;
-          line-height: 9rem;
+          font-size:10rem;   
       }
   }
 
 &--sub {
   font-size: 3rem;
   margin-top:1rem;
+  line-height: 3rem; 
   @include respond(tablet-portrait) {
     font-size: 5rem;
+    line-height: 5rem;
   } 
   font-weight: 200; 
   display: block; 
