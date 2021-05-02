@@ -52,7 +52,7 @@ const SearchTMDB = (props) => {
 
     return (
         <>
-            <h1 className="page-heading">{`Search Query | ${query} - ${totals.reduce((acc,{_,total})=> acc+total,0)} results`}</h1>
+            <h1 className="page-heading">{`Query ${search} | ${query} - ${totals.reduce((acc,{_,total})=> acc+total,0)} results`}</h1>
             <section className='search'>
                 <aside className='search__aside'>
                     <div className="results">
@@ -61,7 +61,7 @@ const SearchTMDB = (props) => {
                                 {
                                     totals && totals.map(({name,total}) => (
                                        <li className='results__item' key={name}>
-                                            <button className="results__button" onClick={() => setSearch(name)}>
+                                            <button className={`results__button ${name === search && 'bg--slate color--white'}`} onClick={() => setSearch(name)}>
                                                 <span>{name}</span>
                                                 <span>({total})</span>
                                             </button>
@@ -74,9 +74,7 @@ const SearchTMDB = (props) => {
                 <div className='search__main'>
                     <ul className="courses">
                         {
-                            courses.results &&
-                            courses.results
-                                .map((course, i) => <Course course={course} key={`${i}-${course.id}`} />) // display the courses
+                            courses.results && courses.results.map((course, i) => <Course course={course} key={`${i}-${course.id}`} />)
                         }
                     </ul>
                 </div>
@@ -85,7 +83,7 @@ const SearchTMDB = (props) => {
             {isLoading ? <Spinner /> : null}
             {(courses.page <= courses.total_pages && !isLoading)
                 ?
-                <div style={{ textAlign: 'center', padding: '1rem' }}>
+                <div style={{ textAlign: 'center', padding: '2rem' }}>
                     <button className='trueblue' onClick={() => searchResource(search, query, courses.page + 1)}>Load More</button>
                 </div>
                 :
