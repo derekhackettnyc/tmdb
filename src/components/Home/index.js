@@ -180,7 +180,7 @@ const Home = () => {
                         <input type="text" id="fname" name="firstname" placeholder="Your name.." />
                         <input type="text" id="lname" name="lastname" placeholder="Your email.." />
                         <div className="basic-form__submit">
-                            <button className="basic-form__button outline-grey" type="submit">Submit</button>
+                            <button className="outline-grey" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
