@@ -372,33 +372,31 @@
 		padding:3rem;
 	}	
 		
-}	
-
-.search {
-    @include respond(tablet-landscape) {
-        display: flex;
-    }
-    &__aside {
-        position: sticky;
-        top: 17rem;
-        flex:0 30%;
-        // background-color: #f7f7f7;
-        padding: 1rem;
-    }
-
-    &__main {
-        flex:1;
-    }
 }
 
-// div.sticky {
-//     position: -webkit-sticky;
-//     position: sticky;
-//     top: 100px;
-//     background-color: yellow;
-//     padding: 50px;
-//     font-size: 20px;
-//     z-index: 999;
-//   }
+.sticky {
+    position: sticky;
+    top: 0;
+    // Important. When the component is being used in the sidebar, a max-height is needed so that it doesn’t exceed the viewport height. 
+    max-height: 300px;
+    background-color: white;
+    padding:1rem;
+
+  }
+
+  .search {
+    @include respond(tablet-landscape) {
+        display: grid;
+        grid-template-columns: 1fr 75%;
+    }
+    &__aside {
+            position: sticky;
+            top: 0;
+            // Important. When the component is being used in the sidebar, a max-height is needed so that it doesn’t exceed the viewport height. 
+            max-height: 300px;
+            background-color: white;
+            padding:1rem;
+    }
+  }
 
 
