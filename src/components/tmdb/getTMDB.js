@@ -1,22 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+// import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import Resource from './Resource'
 import Spinner from '../ui/Spinner'
-import FilterButtons from './FilterButtons'
-
-import { IMAGE_BASE_URL, PROFILE_SIZE } from '../../config'
-
 
 // Redux - actions creators
 import { fetchResources, discoverResources, fetchGenres } from '../../actions'
-
-const actions = {
-    fetchResources,
-    discoverResources,
-    fetchGenres
-}
 
 
 const SORT_TYPES = {
@@ -27,16 +18,19 @@ const SORT_TYPES = {
 
 const GetTMDB = (props) => {
 
-    const { isLoading, resources, genres, fetchResources, discoverResources, fetchGenres } = props
+    // const { isLoading, resources, genres, fetchResources, discoverResources, fetchGenres } = props
     const { catagory, subcatagory, topic, query } = props.match.params;
 
-    const paramsRef = useRef({})
 
-    // const [sort, setSort] = React.useState('popularity')
+    const { isLoading, resources, genres } = useSelector(state => ({
+        isLoading: state.async.loading,
+        resources: state.resources,
+        genres: state.genres
+    }))
+
+    const dispatch = useDispatch()
 
     const [sideNav, setSideNav] = useState(true)
-
-    // const [genreArr, setGenreArr] = useState([])
 
     const [params, setParams] = useState({with_genres:[],sort_by:'popularity',page:1})
 
@@ -56,8 +50,8 @@ const GetTMDB = (props) => {
 
 
     useEffect(() => {
-        fetchGenres()
-        fetchResources(catagory, subcatagory)
+        dispatch(fetchGenres())
+        dispatch(fetchResources(catagory, subcatagory))
     }, [])
 
 
@@ -65,7 +59,7 @@ const GetTMDB = (props) => {
         // Once MOUNTED / PROPS CHANGED Grab the data
         if(params.page) {
             const resourceType = (params.with_genres.length === 0) && (params.sort_by === 'popularity')
-            resourceType ? fetchResources(catagory, subcatagory, params.page) : discoverResources(catagory, params)
+            resourceType ? dispatch(fetchResources(catagory, subcatagory, params.page)) : dispatch(discoverResources(catagory, params))
         }
 
     }, [catagory, subcatagory, params])
@@ -96,7 +90,7 @@ const GetTMDB = (props) => {
     const handleSearch = () => {
         // setDiscover(true)
         setSub('Custom Filter')
-        discoverResources(cat, params)
+        dispatch(discoverResources(cat, params))
     }
 
     const handleLoadMore = () => {
@@ -113,7 +107,7 @@ const GetTMDB = (props) => {
             <div className='filter-resources'>
                 <div className='filter-resources__components filter-resources__components' style={{ width: sideNav && '250px' }} >
                     <div className='box'>
-                    <select className="select-css" onChange={event => setParams({...params, sort_by:event.target.value, page:1})}>
+                    <select className="select-css" onChange={event => setParams({...params, sort_by:SORT_TYPES[event.target.value], page:1})}>
                         <option disabled>Sort</option>
                         <option value="popularity">Popularity (desc)</option>
                         <option value="ratings">Ratings (desc)</option>
@@ -188,14 +182,4 @@ const GetTMDB = (props) => {
 
 }
 
-// Get values from redux store and map to props. Yes. Still using mapState - it's a GIT thing!
-const mapStateToProps = state => {
-    return {
-        isLoading: state.async.loading,
-        resources: state.resources,
-        genres: state.genres
-    }
-}
-
-// Still using connect - More GIT
-export default connect(mapStateToProps, actions)(GetTMDB)
+export default GetTMDB
