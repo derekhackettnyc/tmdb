@@ -22,7 +22,6 @@ const GetTMDB = (props) => {
     const { catagory, subcatagory, topic, query } = props.match.params;
 
 
-
     const { isLoading, resources, genres } = useSelector(state => ({
         isLoading: state.async.loading,
         resources: state.resources,
