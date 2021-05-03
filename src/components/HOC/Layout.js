@@ -2,20 +2,20 @@ import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer'
 import ScrollToTopButton from '../ui/ScrollToTopButton'
-import { mainNavMenu } from '../../menus' 
+import { mainNavMenu } from '../../menus'
+import AnimateHeader from '../ui/AnimateHeader';
 
-const Layout = (props) => {
+const Layout = ({ children }) => {
 
     return (
-            <div>
-                {/* <AnimateHeader> */}
-                    <Header nav={mainNavMenu} />
-                {/* </AnimateHeader> */}
-                {props.children}
-                <Footer/>
-                <ScrollToTopButton />
-            </div>
-
+        <>
+            <AnimateHeader>
+                <Header nav={mainNavMenu} />
+            </AnimateHeader>
+            {children}
+            <Footer />
+            <ScrollToTopButton />
+        </>
     )
 }
 

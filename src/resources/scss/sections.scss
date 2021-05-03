@@ -48,13 +48,20 @@
 
 }
 
+.aninmate-header {
+    width: 100%;
+    position: fixed;
+    transition: top 250ms ease-in-out;
+    z-index: 50;
+}
+
 
 
 .header {
 
     background-color: white;
     width: 100%; 
-    position: fixed; 
+    // position: fixed; 
     height:17rem;
     top: 0px; 
     transition: top 0.4s ease-in-out; 
@@ -62,9 +69,6 @@
     z-index: 15; 
     border-bottom: .05rem;  
     box-shadow: 1px 5px 5px -5px #aaa; 
-    // background-color:#002664;
-    // padding:2rem;
-
     display: flex;
     justify-content: space-around;
     flex-direction: column;
