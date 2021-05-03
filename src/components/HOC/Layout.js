@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer'
+import ScrollToTopButton from '../ui/ScrollToTopButton'
 import { mainNavMenu } from '../../menus' 
 
 const Layout = (props) => {
@@ -12,6 +13,7 @@ const Layout = (props) => {
                 {/* </AnimateHeader> */}
                 {props.children}
                 <Footer/>
+                <ScrollToTopButton />
             </div>
 
     )
