@@ -34,7 +34,6 @@ const App = ({menuDrawOpened }) => {
                 <Switch>
                     <Route path="/" exact component={HomePage} />
                     <Route path="/person/:id" component={Person} exact />
-
                     <Route path={['/search/:query']} exact component={SearchTMDB} />
                     <Route path={['/discover/:catagory/:subcatagory', '/discover/:catagory/:subcatagory/:topic']} exact component={GetTMDB} />
                     <Route path="/:resoureType/:id" component={ResourceDetails} exact />
