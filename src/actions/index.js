@@ -2,7 +2,12 @@ import tmdbAPI from '../apis/tmdbAPI'
 import { API_KEY } from '../config';
 import { wait } from '../components/utils'
 
-import { ASYNC_START, ASYNC_END, FETCH_RESOURCES, FETCH_RESOURCE, FETCH_CREDITS, FETCH_GENRES, FETCH_RECOMMENDED, SEARCH_TOTALS, OPEN_DROPDOWN, MENUDRAW_OPENED } from './types'
+import { 
+    ASYNC_START, ASYNC_END, 
+    FETCH_RESOURCES, FETCH_RESOURCE, FETCH_CREDITS, FETCH_GENRES, FETCH_RECOMMENDED, 
+    FETCH_PERSON,
+    SEARCH_TOTALS, OPEN_DROPDOWN, MENUDRAW_OPENED 
+} from './types'
 
 // actions creators
 
@@ -83,8 +88,6 @@ export const fetchRecommended = (resource,id) => async dispatch => {
 }
 
 
-
-
 export const searchResource = (resource, query, page=1) => async dispatch => {
 
     // This action creator is called when the user enters a query into the search bar
@@ -115,6 +118,14 @@ export const fetchSearchCategoryTotals = (query, page=1) => async dispatch => {
     dispatch({ type: SEARCH_TOTALS, payload: searchTotals.reverse()})
 
 }
+
+
+export const fetchPerson = (id) => async dispatch => {
+    const response = await tmdbAPI.get(`person/${id}?api_key=${API_KEY}&language=en-US`)
+    dispatch({ type: FETCH_PERSON, payload: response.data })
+}
+
+
 
 
 
