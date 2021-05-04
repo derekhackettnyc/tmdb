@@ -335,32 +335,16 @@
 
 .promotes {
 
-  // margin:0 2%;
-
+  @include respond(tablet-portrait) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+  }
 
   @include respond(tablet-landscape) {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  &--portrait {
-      @include respond(tablet-portrait) {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-      }
-      @include respond(tablet-landscape) {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-      }
-  }
-
-  @include respond(desktop-15) {
-      grid-template-columns: repeat((6,1fr));
-      font-size:1.6rem;
-      margin: 0;
-
-  }
-
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    font-size:1.6rem;
+}
 }
 
 
