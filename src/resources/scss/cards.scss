@@ -357,9 +357,9 @@
 
 
   &__title {
-  color: #333;
-  text-transform: capitalize;
-  font-weight: 700;
+  text-transform: uppercase;
+  font-weight: bold;
+
   }
 
   &__text {
@@ -372,4 +372,221 @@
   cursor: pointer;
   }
 
+}
+
+
+
+.flyer {
+
+  font-weight: 500;
+  height:100%;
+  padding:2%;
+
+  @include respond(tablet-landscape) {
+      display: flex;
+      &--align--center {
+          align-items: center;
+      }
+      &--reverse {
+          flex-direction: row-reverse;
+      }
+  }
+
+  &__promotes {
+      @include respond(tablet-portrait) {
+          padding:0;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+      }
+  }
+
+  &--center {
+      width:80%;  
+  }
+
+  &__write-up {
+      flex:1;
+      margin: 2rem 0;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @include respond(tablet-landscape) {
+          margin-left: 5%;
+      }
+
+      &--end {
+          justify-content: flex-end;
+      }
+
+      &--center {
+          justify-content: center;
+      }
+      
+  }
+
+  &__type {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__blurb {
+    color:#666;
+  }
+
+  &__title {
+      // align-self: center;
+    // text-transform: uppercase;
+    // font-size: 3rem;
+    // color: #333;
+    // font-weight: bolder;
+  //   margin-bottom: 2rem;
+
+    &--large {
+      font-size:4rem;
+      font-weight: 700;
+  }      
+    &--larger {
+        font-size:6rem;
+    }
+    
+    & span {
+        color:white;
+    }
+
+}
+
+
+&__icons {
+    & i {
+        margin: 3rem 3rem 0 0;
+    }
+}
+
+&__blurb {
+  // align-self: center;
+  line-height: 3rem;
+  @include respond(tablet-portrait) {
+    width:90%;
+  }
+
+}
+
+&__button {
+  margin-top: 5%;
+
+  &--end {
+      align-self: flex-end;
+  }
+
+  
+
+}
+
+
+&__figure {
+
+
+  flex:0 0 50%;
+
+  text-align: center;
+
+  & figcaption {
+    font-size: smaller;
+    color:#aaa;
+    padding:1rem 0;
+  }
+}
+}
+
+
+
+.portfolio-card {
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, max-content);
+  // border:3px solid green;
+  justify-items: center;
+  // background-color: lime;
+  @include respond(tablet-portrait) {
+      
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+
+      box-shadow: 0px 2px 24px 0px rgba(53,55,64,0.1);
+      padding: 2%;
+      margin:1% 0;
+      &--rev {
+          grid-column: 2/3;
+          grid-row:1/2;
+          // background-color: pink;
+          margin-left:2rem;
+      }
+  }
+
+
+
+  &__write-up {
+      padding:2 0rem;
+  }
+
+  &__no {
+      font-size:12rem;
+      color:$yellow;
+      font-weight: 700;
+      letter-spacing: -0.5rem;
+      padding:6vh 0;
+  }
+
+  &__title {
+      font-weight: 700;
+      padding:1.5% 0;
+  }
+
+  &__paragraph {
+
+      // width: 60vw;
+      padding: 2% 10% 2% 0;
+
+  }
+
+  &__figure {
+      max-width: 30rem;
+  }
+
+  &__button {
+      margin:5vh 0;
+
+  }
+}
+
+.resume-card {
+  display: grid;
+  @include respond(tablet-portrait) {
+    grid-template-columns: max-content 1fr;
+    gap: 3rem;
+  }
+
+  &__year {
+    font-size: 3rem;
+    color:$yellow;
+    @include respond(tablet-portrait) {
+      font-size: 6rem;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & h4 {
+      padding-bottom: .5rem;
+    }
+
+    & h5 {
+      opacity: .7;
+      text-transform: lowercase;
+    }
+  }
 }

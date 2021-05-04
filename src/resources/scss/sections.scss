@@ -454,3 +454,39 @@
   }
 
 
+  .award-winning-design {
+    display: flex;
+    justify-content: center;
+    // align-items: flex-end;
+
+    // margin-top: 5rem;
+    // padding-bottom: 10rem;
+    background-color: $off-white;
+
+    &--yellow-bg {
+        background: linear-gradient(180deg,$off-white 80%,#fcd21d 80%);
+        padding-bottom: 5%;
+    }
+
+
+
+    & img {
+        border: 2rem solid white;
+    }
+
+    @include respond(tablet-landscape) {
+        box-shadow: inset 0px 100px 0px 0px #ffffff;
+    }
+
+
+    
+}
+
+
+.porfolios {
+    padding:3% 10%;
+}
+
+
+
+

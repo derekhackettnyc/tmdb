@@ -1,0 +1,135 @@
+.timeline {
+
+    position: relative;
+    margin: 0 auto;
+    max-width: 150rem;
+
+    /* The actual timeline (the vertical ruler) */
+    &::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: $yellow;
+      top: 0;
+      bottom: 0;
+      left: 33px;
+      margin-left: -3px;
+
+      @include respond(tablet-portrait) {
+        left:50%;
+      }
+    }    
+    
+    /* Container around content */
+    &__container {
+        position: relative;
+        background-color: inherit;
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      
+        @include respond(tablet-portrait) {
+          padding: 10px 40px;
+          width: 50%;
+        }
+
+        /* The circles on the timeline */
+        &::after {
+          content: '';
+          position: absolute;
+          width: 25px;
+          height: 25px;
+          background-color: $sapphire;
+          border: 4px solid $yellow;
+          top: 20px;
+          border-radius: 50%;
+          z-index: 1;
+        }      
+    }
+
+    /* The actual content */
+  &__content {
+      padding: 1rem;
+      margin:1rem 0;
+      background-color: white;
+      position: relative;
+      border-radius: 10px;
+      border:3px solid $yellow;
+      @include respond(tablet-portrait) {
+        margin: initial;
+      }
+    }
+
+//   /* Place the container to the left */
+  &--left {
+
+      &::before {
+
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent $yellow transparent transparent;
+        
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        @include respond(tablet-portrait) {
+          left:auto; // resets the left value to initial state
+          right: 30px;
+          border-width: 10px 0 10px 10px;
+          border-color: transparent transparent transparent $yellow;
+        }
+      } 
+      
+      &::after { /* Make sure all circles are at the same spot */
+        left:20px;
+        @include respond(tablet-portrait) {
+          left: auto;
+          right:-12px;
+        }
+      }
+
+  }
+  
+//   /* Place the container to the right */
+  &--right {
+
+      left:0%;
+
+      @include respond(tablet-portrait) {
+        left:50%;
+      }
+      /* Add arrows to the right container (pointing left) */
+      &::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent $yellow transparent transparent;
+
+        @include respond(tablet-portrait) {
+          left:30px;
+        }        
+
+      }
+      
+      &::after { /* Make sure all circles are at the same spot */
+        left:20px;
+        @include respond(tablet-portrait) {
+          left: -12px;
+        }
+
+          }
+  
+    }  
+    
+  }
