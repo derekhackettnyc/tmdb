@@ -12,13 +12,13 @@ const NavMenuItem = ( { category, menuItem, actions, dropDown } )=> {
 
         )
 
-    if (!menuItem.sub) {
-        return (
-            <li className="navigation__parent">
-                <Link className="navigation__button" to={`/${category}`} onClick={() => actions.handleClickEvent(category)}>{menuItem.title}</Link>
-            </li>
-        )
-    }
+    // if (!menuItem.sub) {
+    //     return (
+    //         <li className="navigation__parent">
+    //             <Link className="navigation__button" to={`${category}`} onClick={() => actions.handleClickEvent(category)}>{menuItem.title}</Link>
+    //         </li>
+    //     )
+    // }
 
     const keys = Object.keys(menuItem.sub)
 
@@ -77,7 +77,7 @@ const NavMenuItem = ( { category, menuItem, actions, dropDown } )=> {
                             return (
                                 <li key={`${category}-${keys[index]}`}>
                                     <Link
-                                        className="navigation__link" to={category === 'misc' ? `/${keys[index]}` : `${path}/${category}/${keys[index]}`}
+                                        className="navigation__link" to={category === 'misc' ? `/${keys[index]}` : `/discover/${category}/${keys[index]}`}
                                         onClick={() => actions.handleClickEvent({ category: category, sub: `${keys[index]}` })}>
                                         {item.title}
                                     </Link>

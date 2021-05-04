@@ -1,0 +1,53 @@
+.resource {
+    position: relative;
+    display: grid;
+
+    align-items: center;
+    justify-items: center;
+
+    width:100%;
+    overflow: hidden;
+    color:white;
+    padding-top: 20rem;
+
+    // background-blend-mode: overlay;
+    // background-color: black;
+    @include respond(tablet-landscape) {
+        grid-template-columns: 30% 1fr;
+        height:85vh;
+        gap:3rem;
+        padding:3rem;
+        padding-top: 16rem;
+    }
+
+    &__backdrop {
+        position: absolute;
+        display: block;
+        width:100%;
+        opacity: .3;
+    }
+
+    &__title {
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    &__poster {
+        border-radius: 20px;
+        padding:1rem;
+    }
+
+
+    &__left {
+        padding:1rem;
+        & > * {
+            margin-bottom: 1rem;
+        }
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        // padding:1rem;
+    }
+}

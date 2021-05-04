@@ -146,6 +146,31 @@
 }
 
 
+.credits {
+    display:grid;
+    // grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    @include respond(tablet-portrait) {
+        grid-template-columns: 1fr 1fr;
+    } 
+    
+    @include respond(tablet-portrait) {
+        grid-template-columns: 1fr 1fr 1fr;
+    } 
+    
+    @include respond(desktop) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+                padding:2rem;
+
+    }  
+}
+
+
 .blog {
     display:grid;
     // grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));

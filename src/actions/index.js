@@ -2,9 +2,25 @@ import tmdbAPI from '../apis/tmdbAPI'
 import { API_KEY } from '../config';
 import { wait } from '../components/utils'
 
-import { ASYNC_START, ASYNC_END, FETCH_RESOURCES, FETCH_GENRES, SEARCH_TOTALS, OPEN_DROPDOWN, MENUDRAW_OPENED } from './types'
+import { ASYNC_START, ASYNC_END, FETCH_RESOURCES, FETCH_RESOURCE, FETCH_CREDITS, FETCH_GENRES, FETCH_RECOMMENDED, SEARCH_TOTALS, OPEN_DROPDOWN, MENUDRAW_OPENED } from './types'
 
 // actions creators
+
+
+export const fetchResource = (category, id) => async dispatch => {
+
+    dispatch(asyncStart())
+    dispatch(menuDrawOpened(false)) // incase we are in mobile mode
+    await wait(700) // for development only
+    const response = await tmdbAPI.get(`${category}/${id}?api_key=${API_KEY}&language=en-US&region=US`)
+    dispatch({ type: FETCH_RESOURCE, payload: response.data})
+
+    // console.log
+
+    dispatch(asyncEnd())
+    console.log("RESPONSE",response.data)
+}
+
 
 export const fetchResources = (category, subcategory, page=1) => async dispatch => {
 
@@ -45,8 +61,8 @@ export const discoverResources = (resource='movie', params, page=1) => async dis
 
 
 export const fetchGenres = () => async dispatch => {
-    const response = await tmdbAPI.get(`genre/movie/list?api_key=${API_KEY}&language=en-US`)
 
+    const response = await tmdbAPI.get(`genre/movie/list?api_key=${API_KEY}&language=en-US`)
     const newGenresObj = response.data.genres.reduce((acc, {id, name}) => {
         acc[id] = name
         return acc
@@ -54,6 +70,18 @@ export const fetchGenres = () => async dispatch => {
 
     dispatch({ type: FETCH_GENRES, payload: {ids:newGenresObj, original:response.data.genres}})
 }
+
+
+export const fetchCredits = (resource,id) => async dispatch => {
+    const response = await tmdbAPI.get(`${resource}/${id}/credits?api_key=${API_KEY}&language=en-US`)
+    dispatch({ type: FETCH_CREDITS, payload: response.data })
+}
+
+export const fetchRecommended = (resource,id) => async dispatch => {
+    const response = await tmdbAPI.get(`${resource}/${id}/recommendations?api_key=${API_KEY}&language=en-US`)
+    dispatch({ type: FETCH_RECOMMENDED, payload: response.data })
+}
+
 
 
 
@@ -87,6 +115,9 @@ export const fetchSearchCategoryTotals = (query, page=1) => async dispatch => {
     dispatch({ type: SEARCH_TOTALS, payload: searchTotals.reverse()})
 
 }
+
+
+
 
 
 

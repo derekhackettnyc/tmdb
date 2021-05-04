@@ -58,7 +58,7 @@ const SearchTMDB = (props) => {
                 <div className='search__main'>
                     <ul className="courses">
                         {
-                            resources.results && resources.results.map((resource, i) => <Resource resource={resource} key={`${i}-${resource.id}`} />)
+                            resources.results && resources.results.map((resource, i) => <Resource resourceType={search} resource={resource} key={`${i}-${resource.id}`} />)
                         }
                     </ul>
                 </div>

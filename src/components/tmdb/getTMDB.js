@@ -160,74 +160,11 @@ const GetTMDB = (props) => {
                             resources.results &&
                             resources.results
                                 // .slice(0,1)
-                                .map((resource, i) => <Resource resource={resource} key={`${i}-${resource.id}`} />) // display the resources
+                                .map((resource, i) => <Resource resourceType={catagory} resource={resource} key={`${i}-${resource.id}`} />) // display the resources
                         }
                     </ul>
                 </div>
             </div>
-
-
-            {/* <div className='filter-resources'>
-                <div className='filter-resources__components filter-resources__components' style={{ width: sideNav && '250px' }} >
-                    <div className='box'>
-                    <select className="select-css" onChange={event => setParams({...params, sort_by:SORT_TYPES[event.target.value], page:1})}>
-                        <option disabled>Sort</option>
-                        <option value="popularity">Popularity (desc)</option>
-                        <option value="ratings">Ratings (desc)</option>
-                        <option value="release">Release Date (desc)</option>
-                    </select>
-                    </div>
-                    <div className="genre">
-                        <h4 className='genre__heading'>Category</h4>
-
-                        <ul className="genre__list">
-                            {
-                                ['movie','tv'].map(category => (
-                                    <li key={category}>
-                                        <button 
-                                            className={`genre__button ${category === cat && 'bg--navy'}`} 
-                                            onClick={() => setCat(category)}
-                                        >
-                                            {category}
-                                        </button>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                    <div className="genre">
-                        <h4 className='genre__heading'>Genres</h4>
-
-                        <ul className="genre__list">
-                            {
-                                genres.original && genres.original.map(genre => (
-                                    <li key={genre.id}>
-                                        <button 
-                                            className={`genre__button ${params.with_genres.includes(genre.id) && 'bg--navy'}`} 
-                                            onClick={() => toggleButton(genre.id)}
-                                        >
-                                            {genre.name}
-                                        </button>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-
-                    </div>
-                    <button onClick={handleSearch} className='filter-resources__button'>Search</button>
-                </div>
-
-                <div className='filter-resources__list-container'>
-                    <ul className="courses">
-                        {
-                            resources.results &&
-                            resources.results
-                                // .slice(0,1)
-                                .map((resource, i) => <Resource resource={resource} key={`${i}-${resource.id}`} />) // display the resources
-                        }
-                    </ul>
-                </div>
-            </div> */}
 
             {isLoading ? <Spinner /> : null}
             {(resources.page <= resources.total_pages && !isLoading)
