@@ -11,8 +11,10 @@ import { debounce } from './utils'
 import GetTMDB from './tmdb/getTMDB'
 import SearchTMDB from './tmdb/searchTMDB'
 import ResourceDetails from './tmdb/ResourceDetails'
+import Person from './tmdb/Person'
 
 import '../resources/scss/wild-style.scss'
+
 
 
 const App = ({menuDrawOpened }) => {
@@ -31,6 +33,8 @@ const App = ({menuDrawOpened }) => {
             <Layout>
                 <Switch>
                     <Route path="/" exact component={HomePage} />
+                    <Route path="/person/:id" component={Person} exact />
+
                     <Route path={['/search/:query']} exact component={SearchTMDB} />
                     <Route path={['/discover/:catagory/:subcatagory', '/discover/:catagory/:subcatagory/:topic']} exact component={GetTMDB} />
                     <Route path="/:resoureType/:id" component={ResourceDetails} exact />
