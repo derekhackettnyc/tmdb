@@ -8,7 +8,7 @@
         font-weight: 600;
         text-transform: uppercase;
         text-align: center;
-        padding-top: 5%;
+        // padding-top: 1%;
         @include respond(tablet-portrait) {
             font-size: 4rem;
         }
