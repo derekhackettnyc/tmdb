@@ -122,7 +122,25 @@ export const fetchSearchCategoryTotals = (query, page=1) => async dispatch => {
 
 export const fetchPerson = (id) => async dispatch => {
     const response = await tmdbAPI.get(`person/${id}?api_key=${API_KEY}&language=en-US`)
-    dispatch({ type: FETCH_PERSON, payload: response.data })
+    const hightestGrossgMovies = await tmdbAPI.get(`https://api.themoviedb.org/3/discover/movie?with_people=${id}&sort_by=revenue.desc&api_key=844dba0bfd8f3a4f3799f6130ef9e335`)
+
+    const credits = await tmdbAPI.get(`person/${id}/combined_credits?api_key=${API_KEY}&language=en-US`)
+    const actingCredits = credits.data.cast.map((movie) => {
+        return {
+            id:movie.id,
+            media:movie.media_type,
+            year: (movie.release_date || 'XXXX-00-00').substring(0, 4),
+            title: movie.title,
+            character: movie.character,
+            vote:movie.vote_average
+        }
+    }).filter(movie => movie.year !== 'XXXX')
+    .sort((a,b) => (a.year< b.year) ? 1 : ((b.year < a.year) ? -1 : 0));
+
+    // console.log("ACTING",actingCredits)
+    // await tmdbAPI.get(`person/${id}/tv_credits?api_key=${API_KEY}&language=en-US`)
+
+    dispatch({ type: FETCH_PERSON, payload: {...response.data, topTwenty:hightestGrossgMovies.data.results, actingCredits:actingCredits}})
 }
 
 
