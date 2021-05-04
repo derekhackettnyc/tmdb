@@ -21,18 +21,20 @@ const SearchTMDB = (props) => {
         totals: state.totals
     }))
 
+
     const dispatch = useDispatch()
 
     const [search,setSearch] = React.useState('movie')
 
     useEffect(() => {
-        dispatch(searchResource(search,query))
-    },[search])
-
-    useEffect(() => {
         dispatch(fetchGenres())
         dispatch(fetchSearchCategoryTotals(query))
     }, [])
+
+    useEffect(() => {
+        dispatch(searchResource(search,query))
+    },[search,query])
+
 
     return (
         <>
