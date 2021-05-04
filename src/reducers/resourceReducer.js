@@ -1,6 +1,6 @@
-import { FETCH_RESOURCES, FETCH_RESOURCE, FETCH_CREDITS, FETCH_RECOMMENDED } from '../actions/types'
+import { FETCH_RESOURCES, FETCH_RESOURCE, FETCH_CREDITS, FETCH_RECOMMENDED, FETCH_PERSON } from '../actions/types'
 
-export default (state = {results:[], resource:{}, credits:[]}, action) => {
+export default (state = {results:[], resource:{}, credits:[], person:{}}, action) => {
 
     switch (action.type) {
         case FETCH_RESOURCES: {
@@ -27,6 +27,12 @@ export default (state = {results:[], resource:{}, credits:[]}, action) => {
             return {
                 ...state,
                 recommended:action.payload
+            }
+        }
+        case FETCH_PERSON: {
+            return {
+                ...state,
+                person:action.payload
             }
         }          
         default:
