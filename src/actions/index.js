@@ -16,14 +16,14 @@ export const fetchResource = (category, id) => async dispatch => {
 
     dispatch(asyncStart())
     dispatch(menuDrawOpened(false)) // incase we are in mobile mode
+    
     await wait(700) // for development only
     const response = await tmdbAPI.get(`${category}/${id}?api_key=${API_KEY}&language=en-US&region=US`)
-    dispatch({ type: FETCH_RESOURCE, payload: response.data})
 
-    // console.log
+    dispatch({ type: FETCH_RESOURCE, payload: response.data})
+    dispatch(fetchCredits(category, id))
 
     dispatch(asyncEnd())
-    console.log("RESPONSE",response.data)
 }
 
 
@@ -32,9 +32,13 @@ export const fetchResources = (category, subcategory, page=1) => async dispatch 
     // This action creator is called when a menu item is selected. 
     dispatch(asyncStart())
     dispatch(menuDrawOpened(false))
+
     await wait(700) // for development only
     const response = await tmdbAPI.get(`${category}/${subcategory}?api_key=${API_KEY}&language=en-US&region=US&page=${page}`)
+    
     dispatch({ type: FETCH_RESOURCES, payload: response.data})
+
+    // const directors = result.crew.filter( (member) => member.job === "Director");
 
     dispatch(asyncEnd())
     console.log("RESPONSE",response.data)
@@ -78,9 +82,16 @@ export const fetchGenres = () => async dispatch => {
 
 
 export const fetchCredits = (resource,id) => async dispatch => {
-    const response = await tmdbAPI.get(`${resource}/${id}/credits?api_key=${API_KEY}&language=en-US`)
-    dispatch({ type: FETCH_CREDITS, payload: response.data })
+
+    const response = await tmdbAPI.get(`${resource}/${id}/credits?api_key=${API_KEY}&language=en-US`)  
+    const directors = response.data.crew.filter( (member) => member.job === "Director");
+    const screenplay = response.data.crew.filter( (member) => member.job === "Screenplay");
+
+    dispatch({ type: FETCH_CREDITS, payload: {cast:response.data.cast, directors, screenplay} })
 }
+
+
+
 
 export const fetchRecommended = (resource,id) => async dispatch => {
     const response = await tmdbAPI.get(`${resource}/${id}/recommendations?api_key=${API_KEY}&language=en-US`)
@@ -133,7 +144,7 @@ export const fetchPerson = (id) => async dispatch => {
             title: movie.title,
             character: movie.character,
             vote:movie.vote_average
-        }
+        } 
     }).filter(movie => movie.year !== 'XXXX')
     .sort((a,b) => (a.year< b.year) ? 1 : ((b.year < a.year) ? -1 : 0));
 
