@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { fetchResource, fetchCredits, fetchRecommended } from '../../actions'
+import { fetchResource, fetchRecommended } from '../../actions'
 import { IMAGE_BASE_URL, PROFILE_SIZE, BACKDROP_SIZE } from '../../config'
 import SlickSlider from '../ui/SlickSlider'
 
@@ -21,7 +21,6 @@ const ResourceDetails = props => {
 
     useEffect(() => {
         dispatch(fetchResource(resoureType, id))
-        dispatch(fetchCredits(resoureType, id))
         dispatch(fetchRecommended(resoureType, id))
     }, [resoureType, id])
 
