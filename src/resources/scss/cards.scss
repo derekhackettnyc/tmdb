@@ -330,3 +330,62 @@
 	
 	
 }
+
+
+
+.promotes {
+
+  // margin:0 2%;
+
+
+  @include respond(tablet-landscape) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &--portrait {
+      @include respond(tablet-portrait) {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+      }
+      @include respond(tablet-landscape) {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+      }
+  }
+
+  @include respond(desktop-15) {
+      grid-template-columns: repeat((6,1fr));
+      font-size:1.6rem;
+      margin: 0;
+
+  }
+
+}
+
+
+.promote {
+  padding:2%;
+  margin:1rem;
+  display:grid;
+  grid-template-rows: max-content max-content max-content;
+  grid-gap:2rem;
+
+
+  &__title {
+  color: #333;
+  text-transform: capitalize;
+  font-weight: 700;
+  }
+
+  &__text {
+      color:#898989;
+  }
+
+  &__link {
+  color:dodgerblue;
+  font-size:90%;
+  cursor: pointer;
+  }
+
+}
