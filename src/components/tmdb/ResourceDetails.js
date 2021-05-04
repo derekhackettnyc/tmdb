@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { fetchResource, fetchCredits, fetchRecommended } from '../../actions'
 import { IMAGE_BASE_URL, PROFILE_SIZE, BACKDROP_SIZE } from '../../config'
@@ -45,19 +46,21 @@ const ResourceDetails = props => {
                 <h2 className="blog-heading">Top Billed Cast</h2>
                 {
                     credits.cast && credits.cast.slice(0, 11).map(({ id, name, profile_path, character }) => (
-                        <div className="catagory-card" key={id}>
-                            <div className="catagory-card__header">
-                                <div>
-                                    <img src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${profile_path}`} alt={name} />
+                        <Link to={`/person/${id}`}  key={id}>
+                            <div className="catagory-card">
+                                <div className="catagory-card__header">
+                                    <div>
+                                        <img src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${profile_path}`} alt={name} />
+                                    </div>
+                                </div>
+                                <div className="catagory-card__content">
+                                    <h3 className="catagory-card__title">{name}</h3>
+                                    <p>
+                                        <span>{character}</span>
+                                    </p>
                                 </div>
                             </div>
-                            <div className="catagory-card__content">
-                                <h3 className="catagory-card__title">{name}</h3>
-                                <p>
-                                    <span>{character}</span>
-                                </p>
-                            </div>
-                        </div>
+                        </Link>
                     ))
                 }
             </section>
