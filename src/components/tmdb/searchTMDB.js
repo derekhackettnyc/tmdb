@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import { connect } from 'react-redux'
-// import { Link } from 'react-router-dom'
-// import InfiniteScroll from 'react-infinite-scroller'
 
 import Resource from './Resource'
 import Spinner from '../ui/Spinner'
@@ -14,7 +11,7 @@ const SearchTMDB = (props) => {
 
     const { query } = props.match.params;
 
-    const { isLoading, resources, genres, totals } = useSelector(state => ({
+    const { isLoading, resources, totals } = useSelector(state => ({
         isLoading: state.async.loading,
         resources: state.resources,
         genres: state.genres,
