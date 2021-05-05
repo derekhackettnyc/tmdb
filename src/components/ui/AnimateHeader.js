@@ -11,7 +11,7 @@ const AnimateHeader = ( { children }) => {
 
     useEffect(() => {
         window.addEventListener('scroll', animateHeader);
-        console.log("window.innerHeight ", window.innerHeight)
+        // console.log("window.innerHeight ", window.innerHeight)
 
         return function cleanup () {
             window.removeEventListener('scroll', animateHeader)
@@ -19,7 +19,7 @@ const AnimateHeader = ( { children }) => {
       }, []);
 
       const animateHeader = debounce(() => {
-        console.log("AnimateHeader-SCROLLING")
+        // console.log("AnimateHeader-SCROLLING")
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)
             setTopValue(0)
         else {
