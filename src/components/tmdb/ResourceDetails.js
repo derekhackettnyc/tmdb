@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { fetchResource, fetchRecommended } from '../../actions'
 import { IMAGE_BASE_URL, PROFILE_SIZE, BACKDROP_SIZE } from '../../config'
 import SlickSlider from '../ui/SlickSlider'
+import MovieInfoBar from '../elements/MovieInfoBar'
 
 const ResourceDetails = props => {
 
@@ -25,7 +26,7 @@ const ResourceDetails = props => {
     }, [resoureType, id])
 
 
-    const { original_title, title, tagline, overview, backdrop_path, poster_path } = resource
+    const { original_title, title, tagline, overview, backdrop_path, poster_path, runtime, budget, revenue } = resource
 
     return (
         <>
@@ -37,8 +38,11 @@ const ResourceDetails = props => {
                     <h1 className='resource__title'>{original_title}</h1>
                     <h4>{tagline}</h4>
                     <p className='resource__overview'>{overview}</p>
+                    <MovieInfoBar time={runtime} budget={budget} revenue={revenue} directors={credits.directors} screenplay={credits.screenplay} />
                 </div>
             </section>
+
+
 
 
             <section className="section credits">
