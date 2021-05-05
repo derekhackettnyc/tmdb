@@ -31,38 +31,25 @@ const Person = props => {
         <Fragment>
             <section className="section about">
                 <h1 className="page-heading t-ruled-after">{name}</h1>
-
                 <section className="section award-winning-design">
-
                     <div className="flyer flyer--center">
-
                         <div className="flyer__write-up flyer__write-up--end">
-                            <h2 className="flyer__title flyer__title--large t-ruled-after">
-                                Biography
-                        </h2>
+                            <h2 className="flyer__title t-ruled-after">Biography</h2>
                             <p className="flyer__blurb">
                                 {biography}
                             </p>
                         </div>
-
                         <figure className="flyer__figure  moveInRight">
                             <img src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${profile_path}`} alt={name} />
                         </figure>
                     </div>
-
                 </section>
 
-
-
-                <section className="section bg--off-white" style={{ padding: '5rem' }}>
-
-                    <h2 className="section__heading divider">Personal Info</h2>
-
+                <section className="section bg--off-white" style={{ padding: '2rem' }}>
                     <ul className="promotes" style={{ marginTop: '5rem' }}>
                         <li className="promote">
                             <i className="fas fa-3x fa-film color--yellow align--center"></i>
                             <h3 className="promote__title align--center">{known_for_department}</h3>
-                            {/* <p className="promote__text">Curabitur aliquam justo ex, ac varius sem facilisis a. In vel felis eros. Fusce ipsum enim.</p> */}
                         </li>
                         <li className="promote">
                             <i className={`fas fa-3x ${gender === 2 ? 'fa-male' : 'fa-female'} color--yellow align--center`}></i>
@@ -80,7 +67,7 @@ const Person = props => {
                 </section>
 
                 <section className="section portfolio">
-                    <h2 className="section__heading divider" style={{ marginTop: '10rem' }}>Highest Grossing Movies</h2>
+                    <h2 className="section__heading" style={{ marginTop: '10rem' }}>Highest Grossing Movies</h2>
 
                     <ul className="porfolios">
                         {
