@@ -3,10 +3,6 @@ import { calcTime, convertMoney } from '../../utils';
 
 const MovieInfoBar = ({ time, budget, revenue, directors = [], screenplay = [] }) => {
 
-
-  console.log("directors", directors)
-
-
   return (
 
     <>
