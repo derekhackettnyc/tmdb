@@ -6,6 +6,7 @@ import { fetchResource, fetchRecommended } from '../../actions'
 import { IMAGE_BASE_URL, PROFILE_SIZE, BACKDROP_SIZE } from '../../config'
 import SlickSlider from '../ui/SlickSlider'
 import MovieInfoBar from '../elements/MovieInfoBar'
+import Spinner from '../ui/Spinner'
 
 const ResourceDetails = props => {
 
@@ -27,6 +28,9 @@ const ResourceDetails = props => {
 
 
     const { original_title, title, tagline, overview, backdrop_path, poster_path, runtime, budget, revenue } = resource
+
+
+    if(isLoading) return <Spinner />
 
     return (
         <>
