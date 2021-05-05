@@ -14,7 +14,7 @@
     // background-color: black;
     @include respond(tablet-landscape) {
         grid-template-columns: 30% 1fr;
-        height:85vh;
+        height:100vh;
         gap:3rem;
         padding:3rem;
         padding-top: 16rem;
@@ -40,7 +40,7 @@
 
 
     &__left {
-        padding:1rem;
+        padding:5rem;
         & > * {
             margin-bottom: 1rem;
         }
