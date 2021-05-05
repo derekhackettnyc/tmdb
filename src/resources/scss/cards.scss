@@ -434,12 +434,8 @@
   }
 
   &__title {
-      // align-self: center;
-    // text-transform: uppercase;
-    // font-size: 3rem;
-    // color: #333;
-    // font-weight: bolder;
-  //   margin-bottom: 2rem;
+
+    font-size:2.5rem;
 
     &--large {
       font-size:4rem;
@@ -504,9 +500,8 @@
   display:grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, max-content);
-  // border:3px solid green;
   justify-items: center;
-  // background-color: lime;
+
   @include respond(tablet-portrait) {
       
       grid-template-columns: 1fr 1fr;
@@ -518,7 +513,6 @@
       &--rev {
           grid-column: 2/3;
           grid-row:1/2;
-          // background-color: pink;
           margin-left:2rem;
       }
   }
