@@ -74,7 +74,7 @@ const Person = props => {
                             topTwenty && topTwenty.slice(0, 10).map((movie, i) => {
                                 const { id, title, overview, poster_path } = movie
                                 return (
-                                    <li className="portfolio-card">
+                                    <li className="portfolio-card" key={id}>
                                         <div className="portfolio-card__write-up">
                                             <p className="portfolio-card__no">{`${i < 9 ? '0' : ''}${i + 1}`}</p>
                                             <h2 className="portfolio-card__title">{title}</h2>
