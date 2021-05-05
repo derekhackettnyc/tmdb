@@ -512,9 +512,9 @@
       grid-template-columns: 1fr 1fr;
       align-items: center;
 
-      box-shadow: 0px 2px 24px 0px rgba(53,55,64,0.1);
+      box-shadow: 0px 2px 14px 0px rgba(53,55,64,0.1);
       padding: 2%;
-      margin:1% 0;
+      margin:3% 0;
       &--rev {
           grid-column: 2/3;
           grid-row:1/2;
