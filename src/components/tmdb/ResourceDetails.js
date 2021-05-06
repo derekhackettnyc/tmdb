@@ -7,6 +7,7 @@ import { IMAGE_BASE_URL, PROFILE_SIZE, BACKDROP_SIZE } from '../../config'
 import SlickSlider from '../ui/SlickSlider'
 import MovieInfoBar from '../elements/MovieInfoBar'
 import Spinner from '../ui/Spinner'
+import Navigation from '../elements/Navigation'
 
 const ResourceDetails = props => {
 
@@ -33,7 +34,8 @@ const ResourceDetails = props => {
     if(isLoading) return <Spinner />
 
     return (
-        <>
+        <div>
+ 
             <section className='resource' style={{ background: `linear-gradient(to bottom right, rgba(10.98%, 11.76%, 12.55%, 1.00), rgba(10.98%, 11.76%, 12.55%, 0.64)), url(${IMAGE_BASE_URL}${BACKDROP_SIZE}${backdrop_path}) right center/cover no-repeat` }}>
                 <div className='resource__right'>
                     <img className='resource__poster' src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${poster_path}`} alt={title} />
@@ -46,8 +48,7 @@ const ResourceDetails = props => {
                 </div>
             </section>
 
-
-
+            <Navigation id={id} title={title} />
 
             <section className="section credits">
                 <h2 className="blog-heading">Top Billed Cast</h2>
@@ -81,7 +82,7 @@ const ResourceDetails = props => {
                     }
                 </div>
             </section>
-        </>
+        </div>
 
 
 
