@@ -36,8 +36,8 @@ export default class SlickSlider extends Component {
     return (
       <Slider {...settings}>
         {this.props.slides.map(({ id, backdrop_path, title, vote_average }) => (
-          <Link to={`/${'movie'}/${id}`}>
-            <div className="course-details" key={id}>
+          <Link to={`/${'movie'}/${id}`} key={id}>
+            <div className="course-details">
               <div className="course-details__picture">
                 <img src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${backdrop_path}`} alt={title} />
               </div>
