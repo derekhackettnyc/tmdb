@@ -9,6 +9,10 @@ const Navigation = ({ id, title }) => (
         <p>Home</p>
       </Link>
       <p>/</p>
+      <Link to="/discover/movie/popular">
+        <p>discover</p>
+      </Link>
+      <p>/</p>
       <p>{title}</p>
     </div>
   </div>
